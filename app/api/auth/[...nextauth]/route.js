@@ -21,16 +21,14 @@ export const authOptions = NextAuth({
   ],
   callbacks: {
     async signIn({ user, account, profile, email, credentials }) {
-      if (account.provider === "github") {
+      if (account.provider === "github" || account.provider === "google") {
         await connectDB()
         const currentUser = await User.findOne({ email: user.email })
-        if(!currentUser) {
+        if (!currentUser) {
           const newUser = await User.create({
             email: user.email,
             username: user.email.split("@")[0],
           })
-          
-          
         }
         return true
       }
@@ -40,6 +38,7 @@ export const authOptions = NextAuth({
       const dbUser = await User.findOne({ email: session.user.email })
       session.user.name = dbUser.username
       return session
+    }
   }
-}})
+})
 export { authOptions as GET, authOptions as POST }
