@@ -42,7 +42,7 @@ const Paymentpage = ({ username }) => {
         }
         if (searchParams.get("updated") === "true") {
             toast('Profile Updated', {
-                position: "top-right",
+                position: "top-center",
                 autoClose: 5000,
                 hideProgressBar: false,
                 closeOnClick: false,
@@ -95,6 +95,19 @@ const Paymentpage = ({ username }) => {
         <>
             <ToastContainer
                 position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick={false}
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="dark"
+                transition={Bounce}
+            />
+            <ToastContainer
+                position="top-center"
                 autoClose={5000}
                 hideProgressBar={false}
                 newestOnTop={false}
