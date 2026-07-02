@@ -17,6 +17,9 @@ const geistMono = Geist_Mono({
 export const metadata = {
   title: "Get me A Chai - Fund your projects with chai",
   description: "This website is a crowdfunding platform for creators",
+  icons: {
+    icon: "/tea.png",
+  },
 };
 
 export default function RootLayout({ children }) {
