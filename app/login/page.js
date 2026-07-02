@@ -17,7 +17,7 @@ const Login = () => {
     <div className="container mx-auto py-14 text-white">
       <h1 className='text-center text-3xl font-bold'>Login to Get started</h1>
       <div className="flex flex-col min-h-screen gap-2 items-center p-10">
-         <button
+         <button onClick={()=>{signIn("google")}}
           className="flex items-center w-64 bg-slate-50 text-black border border-gray-300 rounded-lg shadow-md max-w-xs px-6 py-2 text-sm font-medium  hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
           <svg className="h-6 w-6 mr-2" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink"
             viewBox="-0.5 0 48 48" version="1.1">
