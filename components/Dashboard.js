@@ -42,6 +42,7 @@ const Dashboard = () => {
             theme: "dark",
             transition: Bounce,
         });
+        router.push(`/${form.username}`)
     }
 
     return (
