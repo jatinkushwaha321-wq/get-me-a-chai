@@ -106,19 +106,6 @@ const Paymentpage = ({ username }) => {
                 theme="dark"
                 transition={Bounce}
             />
-            <ToastContainer
-                position="top-center"
-                autoClose={5000}
-                hideProgressBar={false}
-                newestOnTop={false}
-                closeOnClick={false}
-                rtl={false}
-                pauseOnFocusLoss
-                draggable
-                pauseOnHover
-                theme="dark"
-                transition={Bounce}
-            />
             <Script src="https://checkout.razorpay.com/v1/checkout.js"></Script>
 
             <div className='cover w-full relative'>
