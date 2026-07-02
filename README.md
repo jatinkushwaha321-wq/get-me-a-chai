@@ -1,36 +1,114 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Get Me A Chai! ☕
 
-## Getting Started
+Get Me A Chai is a premium, modern crowdfunding platform built for creators to receive support and donations directly from their fans. Inspired by platforms like Buy Me a Coffee and Patreon, it allows creators to set up customized public pages, collect micro-payments, and display contributions dynamically.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## 🚀 Key Features
+
+*   **🔒 OAuth Social Authentication**: Fast and secure login via **GitHub** and **Google** OAuth providers powered by NextAuth.
+*   **👤 Dynamic Profile Pages (`/[username]`)**: Creators get personalized public pages with their cover photos, profile avatars, supporter counts, and total earnings.
+*   **💳 Integrated Payments**: Seamless micro-donations via **Razorpay** supporting custom amounts and predefined payment shortcuts (₹10, ₹20, ₹30).
+*   **🛠️ Interactive Creator Dashboard**: A private dashboard for creators to manage their settings, upload custom cover/profile pictures, and enter their own Razorpay API credentials.
+*   **🔔 Dynamic Alerts**: Real-time toast notifications (react-toastify) for successful payments and profile updates.
+*   **🔍 Automatic Route Handling**: Secure server-side validation that serves a **404 Not Found page** programmatically if a username doesn't exist in the database.
+*   **🛡️ Secure Webhooks**: Server-side cryptographic signature validation on Razorpay payment callbacks to prevent fraudulent transaction reports.
+
+---
+
+## 🛠️ Tech Stack
+
+*   **Framework**: [Next.js 16 (App Router)](https://nextjs.org/)
+*   **Database**: [MongoDB Atlas](https://www.mongodb.com/) via [Mongoose](https://mongoosejs.com/)
+*   **Authentication**: [NextAuth.js](https://next-auth.js.org/)
+*   **Payment Gateway**: [Razorpay SDK](https://razorpay.com/)
+*   **Styling**: [TailwindCSS v4](https://tailwindcss.com/)
+*   **Notifications**: [React-Toastify](https://github.com/fkhadra/react-toastify)
+
+---
+
+## 📁 Project Structure
+
+```text
+├── actions/             # Next.js Server Actions (useractions.js)
+├── app/                 # Next.js App Router Routes & API Endpoints
+│   ├── [username]/      # Dynamic profile page route
+│   ├── about/           # Info page detailing project vision
+│   ├── api/             # API Endpoints (auth callbacks, Razorpay webhooks)
+│   ├── dashboard/       # Creator profile configuration dashboard
+│   ├── login/           # OAuth entry sign-in page
+│   ├── globals.css      # Core styles & Tailwind directives
+│   └── layout.js        # Main layout wrapper with session wrapper
+├── components/          # Reusable React client components (Navbar, Paymentpage, etc.)
+├── db/                  # MongoDB connection helpers (connectDb.js)
+├── models/              # Mongoose DB Models (User.js, Payment.js)
+├── public/              # Static files (GIFs, avatars, icons)
+├── .env.local           # Local configuration environment secrets
+└── package.json         # Build commands and dependency listings
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## ⚙️ Environment Configuration
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Create a `.env.local` file in the root directory and add the following keys:
 
-## Learn More
+```ini
+# NextAuth Authentication Config
+NEXTAUTH_URL=http://localhost:3000
+NEXTAUTH_SECRET=your_nextauth_jwt_secret
 
-To learn more about Next.js, take a look at the following resources:
+# GitHub OAuth App Secrets
+GITHUB_ID=your_github_client_id
+GITHUB_SECRET=your_github_client_secret
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# Google OAuth App Secrets
+GOOGLE_CLIENT_ID=your_google_client_id
+GOOGLE_CLIENT_SECRET=your_google_client_secret
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+# Razorpay API Credentials
+KEY_ID=your_razorpay_api_key_id
+NEXT_PUBLIC_KEY_ID=your_razorpay_api_key_id
+KEY_SECRET=your_razorpay_api_key_secret
 
-## Deploy on Vercel
+# Public Website URL
+URL=http://localhost:3000
+NEXT_PUBLIC_URL=http://localhost:3000
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+# MongoDB Atlas Database URI (Standard/Direct format recommended)
+MONGODB_URI=mongodb://username:password@shard1:27017,shard2:27017/chai?ssl=true&replicaSet=atlas-shard-0&authSource=admin
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## 🏃 Local Setup & Development
+
+### 1. Clone the repository
+```bash
+git clone <repository-url>
+cd get-me-a-chai
+```
+
+### 2. Install dependencies
+```bash
+npm install
+```
+
+### 3. Run the development server
+```bash
+npm run dev
+```
+
+### 4. Build for production
+```bash
+npm run build
+npm run start
+```
+
+---
+
+## 🧪 Linting & Formatting
+To keep the codebase clean, check for ESLint warnings and errors:
+```bash
+npm run lint
+```
