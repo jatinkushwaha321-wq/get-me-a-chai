@@ -31,18 +31,7 @@ const Dashboard = () => {
 
     const handleSubmit = async (e) => {
         let a = await updateProfile(e, session.user.name)
-        toast('Profile Updated', {
-            position: "top-center",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: false,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "dark",
-            transition: Bounce,
-        });
-        router.push(`/${form.username}`)
+        router.push(`/${form.username}?updated=true`)
     }
 
     return (
